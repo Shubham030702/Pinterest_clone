@@ -12,15 +12,23 @@ passport.use(new localStrategy(userModel.authenticate()))
 router.get('/', function (req, res, next) {
   res.render('index');
 });
-router.get('/feed', function (req, res, next) {
-  res.render('feed');
+router.get('/user/:id', async function (req, res, next) {
+  const oid = new ObjectId(req.params.id)
+  const userData = await userModel.findOne({ _id: oid }).populate("posts")
+  res.render("user",{user:userData})
+});
+router.get('/feed', isLoggedIn, async function (req, res, next) {
+  const userData = await userModel.find({
+    'posts': { $exists: true, $not: { $size: 0 } }
+  }).populate("posts")
+  res.render("feed", { user: userData })
 });
 router.get('/delete/:id', isLoggedIn, async function (req, res, next) {
-  const oid=new ObjectId(req.params.id)
-  await postModel.deleteOne({_id:oid})
-  const user = await userModel.findOne({username:req.session.passport.user})
+  const oid = new ObjectId(req.params.id)
+  await postModel.deleteOne({ _id: oid })
+  const user = await userModel.findOne({ username: req.session.passport.user })
   let index = user.posts.indexOf(oid);
-  user.posts.splice(index,1)
+  user.posts.splice(index, 1)
   user.save()
   res.redirect("/profile")
 })

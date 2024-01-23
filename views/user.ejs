@@ -35,12 +35,6 @@
           <h3 class="username">@<%=user.username%></h3>
           <p class="tagline">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
           <p class="description">some description</p>
-          <a href="/logout" class="button">Logout</a>
-          <form class="uploadsection" action="/upload" method="post" enctype="multipart/form-data">
-            <input type="text" name="filecaption" placeholder="Give Caption">
-            <input type="file" name="file">
-            <input type="submit">
-          </form>
         </div>
     </div>
     <div class="container">
@@ -50,8 +44,6 @@
               <img src="/images/uploads/<%=post.image%>" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title"><%=post.imageText%></h5>
-                <button class="delete" onclick="window.location.href='/delete/<%=post._id%>'">delete
-                </button>
               </div>
             </div>   
 
