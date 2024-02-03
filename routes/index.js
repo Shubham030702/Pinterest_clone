@@ -8,21 +8,28 @@ const upload = require("./multer")
 const localStrategy = require('passport-local');
 const { post } = require('../app');
 passport.use(new localStrategy(userModel.authenticate()))
-/* GET home page. */
+
+// Route to registration page
 router.get('/', function (req, res, next) {
   res.render('index');
 });
+
+// Route to user 
 router.get('/user/:id', async function (req, res, next) {
   const oid = new ObjectId(req.params.id)
   const userData = await userModel.findOne({ _id: oid }).populate("posts")
-  res.render("user",{user:userData})
+  res.render("user", { user: userData })
 });
+
+// Route to feed
 router.get('/feed', isLoggedIn, async function (req, res, next) {
-  const userData = await userModel.find({
-    'posts': { $exists: true, $not: { $size: 0 } }
-  }).populate("posts")
-  res.render("feed", { user: userData })
+  const postdata= await postModel.find({
+    user:{ $exists: true }
+  }).populate("user")
+  res.render("feed",{post:postdata});
 });
+
+// Route to delete 
 router.get('/delete/:id', isLoggedIn, async function (req, res, next) {
   const oid = new ObjectId(req.params.id)
   await postModel.deleteOne({ _id: oid })
@@ -32,6 +39,8 @@ router.get('/delete/:id', isLoggedIn, async function (req, res, next) {
   user.save()
   res.redirect("/profile")
 })
+
+// Route to upload
 router.post('/upload', isLoggedIn, upload.single("file"), async function (req, res, next) {
   if (!req.file) {
     res.status(404).send("no files were given")
@@ -77,6 +86,7 @@ router.post("/register", function (req, res) {
     })
   })
 })
+
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
   res.redirect("/login")

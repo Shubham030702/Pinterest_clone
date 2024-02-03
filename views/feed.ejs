@@ -33,8 +33,7 @@
   </nav>
   <div class="card-container">
     <div class="cards flex" onclick="showModal()">
-      <% user.forEach(function(userdata){%>
-        <% userdata.posts.forEach(function(post){%>
+      <% post.forEach(function(post){%>
           <div class="card" >
             <div class="overlay-text top-text">
               <div class="dp">
@@ -43,7 +42,7 @@
                   alt="">
               </div>
               <div class="name" onclick="window.location.href='/user/<%=post.user%>'">
-                <%=userdata.fullname%>
+                <%=post.user.fullname%>
               </div>
             </div>
             <img class="card-image" src="/images/uploads/<%=post.image%>" alt="Card Image">
@@ -57,7 +56,6 @@
               <a href="/images/uploads/<%=post.image%>" download="<%=post.imageText%>.zip"><img src="/images/download_10068752.png" alt="download"></a>
             </div>
           </div>
-          <%})%>
           <%})%>
         </div>
   </div>
