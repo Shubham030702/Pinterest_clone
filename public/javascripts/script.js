@@ -15,3 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     customCursor.style.top = e.pageY + 'px';
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.style.opacity = 1;
+});
