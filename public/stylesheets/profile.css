@@ -1,7 +1,8 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background: url("/images/wallpaperflare.com_wallpaper (1).jpg");
+    background: url("/images/wallpaperflare.com_wallpaper (2).jpg");
+    background-size: contain;
 }
 
 @font-face {
@@ -30,7 +31,7 @@ body {
     border-top-right-radius: 10px;
 }
 
-.navbar #more .dropbtn{
+.navbar #more .dropbtn {
     position: relative;
     display: inline-block;
     cursor: pointer;
@@ -195,8 +196,15 @@ body {
 }
 
 .containerpers {
-    height: 80vh;
+    height: 60vh;
     width: 40vw;
+    background-color: rgba(221, 221, 221, 0.779);
+    backdrop-filter: blur(5%);
+    -webkit-backdrop-filter: blur(5%);
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .flex {
@@ -204,14 +212,6 @@ body {
     flex-wrap: wrap;
     gap: 20px;
     align-items: start;
-}
-
-.cardpers {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .profile-picture {
