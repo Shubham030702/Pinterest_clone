@@ -55,9 +55,15 @@ router.post('/upload', isLoggedIn, upload.single("file"), async function (req, r
   await user.save()
   res.redirect("/profile")
 });
+
 router.get('/login', function (req, res, next) {
   res.render('login', { error: req.flash('error') });
 });
+
+router.get('/upload', function (req, res, next) {
+  res.render('upload', { error: req.flash('error') });
+});
+
 router.get('/profile', isLoggedIn, async function (req, res, next) {
   const user = await userModel.findOne({
     username: req.session.passport.user
@@ -65,8 +71,9 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
     .populate("posts")
   res.render("profile", { user })
 });
+
 router.post('/login', passport.authenticate("local", {
-  successRedirect: "/profile",
+  successRedirect: "/feed",
   failureRedirect: "/login",
   failureFlash: true
 }), function (req, res) {
@@ -82,7 +89,7 @@ router.post("/register", function (req, res) {
   const userData = new userModel({ username, email, fullname });
   userModel.register(userData, password).then(function () {
     passport.authenticate("local")(req, res, function () {
-      res.redirect('/profile');
+      res.redirect('/feed');
     })
   })
 })

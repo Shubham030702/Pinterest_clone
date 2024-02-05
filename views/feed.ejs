@@ -14,23 +14,18 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/profile">Pinterest</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/feed">Feed</a>
-          </li>
-        </ul>
-        <button class="btn btn-outline-success" onclick="window.location.href='/profile'" type="button">profile</button>
+  <div class="navbar">
+    <div class="feed" onclick="window.location.href='/feed'">Feed</div>
+    <a id="site-name" href="/feed">PixelVista</a>
+    <div id="more">
+      <button class="dropbtn">More <span id="arrow-icon" class="arrow-down">&#9660;</span></button>
+      <div id="dropdown-content" class="dropdown-content">
+        <a href="/profile">Profile</a>
+        <a href="/upload">Upload</a>
+        <a href="/logout">Logout</a>
       </div>
     </div>
-  </nav>
+  </div>
   <div class="card-container">
     <div class="cards flex" onclick="showModal()">
       <% post.forEach(function(post){%>

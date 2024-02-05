@@ -1,0 +1,122 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("/images/wallpaperflare.com_wallpaper (2).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.outer-container {
+    position: relative;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    height: 70vh;
+    width: 80vw;
+}
+
+.cross-button {
+    top: 0px;
+    left: 0px;
+    height: 80px;
+    background: #000;
+    position: absolute;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    border-bottom-right-radius: 100% ;
+}
+.cross-button:hover {
+    background: #0000006b;
+}
+
+.inner-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    background: transparent;
+}
+
+.left-section {
+    width: 40%;
+    height: 55vh;
+    margin-right: 15px;
+}
+
+.uploadsection {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    backdrop-filter: blur(20px);
+    background: transparent;
+}
+
+.uploadsection input[type="text"],
+.uploadsection input[type="file"],
+.uploadsection input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.uploadsection input[type="text"] {
+    background-color: #f5f5f5c9;
+}
+
+.uploadsection input[type="file"] {
+    background-color: #f5f5f5c9;
+}
+
+.uploadsection input[type="submit"] {
+    background-color: #16f0cb;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.uploadsection input[type="submit"]:hover {
+    background-color: #16f0cca4;
+    color: #3f3e3e;
+}
+
+
+.right-section {
+    width: 55%;
+    height: 55vh;
+    backdrop-filter: blur(20px);
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.uploadsection {
+    margin-bottom: 15px;
+}
+
+#image-preview {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}

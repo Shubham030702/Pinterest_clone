@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelVista</title>
+    <link rel="stylesheet" href="/stylesheets/upload.css">
+</head>
+
+<body>
+    <body>
+        <div class="cross-button" onclick="window.location.href='/profile'">&#10008;</div>
+        <div class="outer-container">
+            <div class="inner-container">
+                <div class="left-section">
+                    <form class="uploadsection hidden" id="uploadsection" action="/upload" method="post"
+                        enctype="multipart/form-data">
+                        <input type="text" name="filecaption" placeholder="Give Caption">
+                        <input type="file" name="file" id="image-input">
+                        <input type="submit">
+                    </form>
+                </div>
+                <div class="right-section">
+                    <img id="image-preview" src="#" alt="Image Preview">
+                </div>
+            </div>
+        </div>
+        <script src="/javascripts/upload.js"></script>
+    </body>
+</html>

@@ -12,7 +12,7 @@ body {
   position: fixed;
   width: 10px;
   height: 10px;
-  background-color: rgba(255, 255, 255, 0.836);
+  background-color: rgb(255, 255, 255);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -24,6 +24,16 @@ body {
   height: 50px;
   background-color: transparent;
   border: 2px solid rgba(255, 255, 255, 0.815);
+}
+
+.content-hovered {
+  width: 0;
+  height: 0;
+  border-left: 10px solid ;
+  border-right: 10px solid ;
+  border-bottom: 20px solid #3498db;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  z-index: 1;
 }
 
 body {
@@ -183,17 +193,19 @@ form input[type="submit"]:hover {
   color: rgba(255, 255, 255, 0.29);
 }
 
-.loginheader{
+.loginheader {
   margin: 50px 0px;
   font-size: 30px;
 }
+
 .error {
   text-align: center;
   color: red;
-  animation: wiggle 1s ease-in-out 0s 1 ;
+  animation: wiggle 1s ease-in-out 0s 1;
 }
 
 @keyframes wiggle {
+
   0%,
   100% {
     transform: translateX(0);

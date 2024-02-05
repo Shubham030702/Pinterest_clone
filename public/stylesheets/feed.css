@@ -5,6 +5,109 @@
     font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
 }
 
+.navbar {
+    background-color: #51515167;
+    text-align: center;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.58);
+    height: 12vh;
+    margin: 0px 15px;
+}
+
+.feed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+    width: 12vw;
+    background: rgba(255, 255, 255, 0.735);
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.navbar #more .dropbtn{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.735);
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    height: 7vh;
+    width: 12vw;
+}
+
+.navbar #more .dropbtn {
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.735);
+    border: none;
+    outline: none;
+    padding: 14px 16px;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar #more .dropdown-content {
+    margin: 10px;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.navbar #more .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.navbar #more .dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+
+.navbar #more .arrow-down {
+    margin-left: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.feed:hover {
+    background: rgba(255, 255, 255, 0.443);
+}
+
+#more:hover {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    background: rgba(255, 255, 255, 0.443);
+}
+@font-face {
+    font-family: 'NicoMoji';
+    src: url('/images/Nico-Moji/nicomoji/NicoMoji-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.navbar #site-name {
+    display: inline-block;
+    padding: 14px 16px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'NicoMoji';
+}
+
+.navbar #profile {
+    float: right;
+}
+
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;

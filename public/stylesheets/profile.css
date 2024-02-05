@@ -1,9 +1,131 @@
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif; /* Added 'Roboto' font */
+    font-family: 'Roboto', sans-serif;
+    background: url("/images/wallpaperflare.com_wallpaper (1).jpg");
+}
+
+@font-face {
+    font-family: 'NicoMoji';
+    src: url('/images/Nico-Moji/nicomoji/NicoMoji-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.navbar {
+    background-color: #51515167;
+    text-align: center;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.58);
+    height: 12vh;
+    margin: 0px 15px;
+}
+
+.feed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7vh;
+    width: 12vw;
+    background: rgba(255, 255, 255, 0.735);
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.navbar #more .dropbtn{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.735);
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    height: 7vh;
+    width: 12vw;
+}
+
+.navbar #more .dropbtn {
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.735);
+    border: none;
+    outline: none;
+    padding: 14px 16px;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar #more .dropdown-content {
+    margin: 10px;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.navbar #more .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.navbar #more .dropdown-content a:hover {
+    background-color: #ddd;
 }
 
 
+.navbar #more .arrow-down {
+    margin-left: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.feed:hover {
+    background: rgba(255, 255, 255, 0.443);
+}
+
+#more:hover {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    background: rgba(255, 255, 255, 0.443);
+}
+
+.navbar #site-name {
+    display: inline-block;
+    padding: 14px 16px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'NicoMoji';
+}
+
+.navbar #profile {
+    float: right;
+}
+
+#main {
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+    width: 85vw;
+    margin: 10vh 7.5vw;
+}
+
+.container-fluid a {
+    transition: color 0.1s ease;
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+}
+
+.container-fluid a:hover {
+    color: #aaa;
+}
 
 .delete {
     background-color: #db5b34;
@@ -12,26 +134,28 @@ body {
     padding: 10px;
     border: none;
     border-radius: 4px;
-    text-decoration: none; /* Remove the default underline */
+    text-decoration: none;
     display: inline-block;
 }
 
 .delete:hover {
     background-color: #a04c1e;
 }
+
 .uploadsection {
     background-color: #fff;
     padding: 20px;
+    margin: 45px;
     position: relative;
-    left: 40%;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 20%;
-    /* Set the width to 20% of the viewport width */
+    width: 100%;
     max-width: 300px;
-    /* Set a maximum width to ensure it doesn't become too narrow */
     height: auto;
-    /* Let the height adjust based on content */
+}
+
+.hidden {
+    display: none;
 }
 
 .uploadsection input {
@@ -43,7 +167,8 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.uploadsection  input[type="submit"] {
+
+.uploadsection input[type="submit"] {
     background-color: #4caf50;
     color: #fff;
     cursor: pointer;
@@ -53,10 +178,25 @@ body {
     background-color: #45a049;
 }
 
+.uploadbutton {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.uploadbutton:hover {
+    background-color: red;
+    color: white;
+}
+
 .containerpers {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 20px;
+    height: 80vh;
+    width: 40vw;
 }
 
 .flex {
