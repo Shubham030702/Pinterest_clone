@@ -6,7 +6,7 @@ let postModel = require('./post')
 const passport = require('passport')
 const upload = require("./multer")
 const localStrategy = require('passport-local');
-const { post } = require('../app');
+
 passport.use(new localStrategy(userModel.authenticate()))
 
 // Route to registration page

@@ -1,8 +1,10 @@
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
     background: url("/images/wallpaperflare.com_wallpaper (2).jpg");
-    background-size: contain;
+    background-size: cover;
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    overflow: hidden;
 }
 
 @font-face {
@@ -198,15 +200,15 @@ body {
 .containerpers {
     height: 60vh;
     width: 40vw;
-    background-color: rgba(221, 221, 221, 0.779);
-    backdrop-filter: blur(5%);
-    -webkit-backdrop-filter: blur(5%);
+    backdrop-filter: blur(20px);
+    background: transparent;
     border-radius: 5px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid white;
+    color: white;
 }
-
 .flex {
     display: flex;
     flex-wrap: wrap;
@@ -241,8 +243,8 @@ body {
 
 .tagline,
 .description {
-    color: #555;
-    margin: 10px 0;
+    color: #ffffff;
+    margin: 20px 0;
 }
 
 .button {
@@ -257,4 +259,23 @@ body {
 
 .button:hover {
     background-color: #b10202fd;
+}
+
+.edit {
+    background-color: #145065;
+    /* Red */
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.edit:hover {
+    box-shadow: 0 4px 8px rgba(59, 59, 59, 0.646);
 }

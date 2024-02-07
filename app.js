@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var app = express();
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -7,8 +8,21 @@ const expressSession = require('express-session')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const passport = require('passport')
-var app = express();
 const flash = require('connect-flash')
+const mongoose = require('mongoose')
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+mongoose.connect('mongodb+srv://Shubham:Algorithm@cluster0.fw4vuhv.mongodb.net/?retryWrites=true&w=majority',{})
+  .then(() => {
+    console.log('Connected to MongoDB Atlas');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB Atlas:', error);
+  });
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -20,9 +34,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash())
 app.use(expressSession({
-  resave:false,
-  saveUninitialized:false,
-  secret:"hey hey hey"
+  resave: false,
+  saveUninitialized: false,
+  secret: "hey hey hey"
 }))
 app.use(passport.initialize());
 app.use(passport.session());
@@ -33,12 +47,12 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
