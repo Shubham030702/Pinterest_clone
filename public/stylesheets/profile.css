@@ -9,7 +9,7 @@ body {
 
 @font-face {
     font-family: 'NicoMoji';
-    src: url('/images/Nico-Moji/nicomoji/NicoMoji-Regular.ttf') format('truetype');
+    src: url('/fonts/Nico-Moji/nicomoji/NicoMoji-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -131,14 +131,15 @@ body {
 }
 
 .delete {
-    background-color: #db5b34;
+    background-color: #dc7555b7;
     color: #fff;
     cursor: pointer;
-    padding: 10px;
+    padding: 1.2px;
     border: none;
     border-radius: 4px;
     text-decoration: none;
-    display: inline-block;
+    height: 4vh;
+    width: 4vh;
 }
 
 .delete:hover {
@@ -212,7 +213,7 @@ body {
 .flex {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     align-items: start;
 }
 
@@ -248,13 +249,15 @@ body {
 }
 
 .button {
-    display: inline-block;
+    display: inline;
     padding: 10px 20px;
     background-color: #ff0c0c;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s;
+    height: 2vh;
+    width: auto;
 }
 
 .button:hover {
@@ -278,4 +281,32 @@ body {
 
 .edit:hover {
     box-shadow: 0 4px 8px rgba(59, 59, 59, 0.646);
+}
+
+.container{
+    height: 70vh;
+    margin: 0 4vh;
+    border-radius: 5px;
+    background: transparent;
+    backdrop-filter: blur(15px);
+    border: 1px solid white;
+    overflow: scroll;
+    padding: 4vh;
+}
+.card{
+    margin-top: 10px;
+    width: 12vw;
+    height: auto;
+    background: transparent;
+}
+.card-body{
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-title{
+    overflow: scroll;
+    height: 9.3vh;
 }

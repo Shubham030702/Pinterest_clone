@@ -44,7 +44,7 @@ body {
 
 @font-face {
   font-family: 'NicoMoji';
-  src: url('/images/Nico-Moji/nicomoji/NicoMoji-Regular.ttf') format('truetype');
+  src: url('/fonts/Nico-Moji/nicomoji/NicoMoji-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

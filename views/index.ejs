@@ -24,7 +24,12 @@
     <div class="content">
       <p class="header">Welcome to <span>PixelVista</span></p>
       <p class="header">Register Yourself</span></p>
-
+      <% if(error.length> 0){%>
+        <p class="error">
+          <%= error %>
+        </p>
+        <% }%>
+      <p></p>
       <form action="/register" method="post">
         <input type="email" name="email" placeholder="Email" class="detail" /><br />
         <input type="text" name="username" placeholder="Username" class="detail" /><br />

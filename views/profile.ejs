@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -46,13 +47,13 @@
     <div class="container">
       <div class="cards flex">
         <% user.posts.forEach(function(post){%>
-          <div class="card" style="width: 18rem;">
+          <div class="card">
             <img src="/images/uploads/<%=post.image%>" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">
                 <%=post.imageText%>
               </h5>
-              <button class="delete" onclick="window.location.href='/delete/<%=post._id%>'">delete
+              <button class="delete" onclick="window.location.href='/delete/<%=post._id%>'"><i class="material-icons">delete</i>
               </button>
             </div>
           </div>

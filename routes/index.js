@@ -6,13 +6,26 @@ let postModel = require('./post')
 const passport = require('passport')
 const upload = require("./multer")
 const localStrategy = require('passport-local');
+const flash = require('connect-flash');
+const session = require('express-session');
+
+const app = express();
+
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use(flash());
 
 passport.use(new localStrategy(userModel.authenticate()))
 
 // Route to registration page
-router.get('/', function (req, res, next) {
-  res.render('index');
+router.get('/', function (req, res) {
+  res.render('index', { error: req.flash('error') });
 });
+
 
 // Route to user 
 router.get('/user/:id', async function (req, res, next) {
@@ -23,10 +36,10 @@ router.get('/user/:id', async function (req, res, next) {
 
 // Route to feed
 router.get('/feed', isLoggedIn, async function (req, res, next) {
-  const postdata= await postModel.find({
-    user:{ $exists: true }
+  const postdata = await postModel.find({
+    user: { $exists: true }
   }).populate("user")
-  res.render("feed",{post:postdata});
+  res.render("feed", { post: postdata });
 });
 
 // Route to delete 
@@ -84,15 +97,26 @@ router.get('/logout', function (req, res, next) {
     res.redirect('/login');
   });
 });
+
 router.post("/register", function (req, res) {
   const { username, email, password, fullname } = req.body;
   const userData = new userModel({ username, email, fullname });
-  userModel.register(userData, password).then(function () {
-    passport.authenticate("local")(req, res, function () {
-      res.redirect('/feed');
+
+  userModel.register(userData, password)
+    .then(function () {
+      passport.authenticate("local")(req, res, function () {
+        res.redirect('/feed');
+      });
     })
-  })
-})
+    .catch(function (err) {
+      if (err.code === 11000 && err.keyPattern && err.keyPattern.email === 1) {
+        req.flash('error', 'This email address is already in use. Please use a different email.');
+      } else {
+        req.flash('error', err.message);
+      }
+      res.redirect('/');
+    });
+});
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

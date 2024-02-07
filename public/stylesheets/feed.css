@@ -2,7 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+}
+
+body{
+    background-image: url('/images/wallpaperflare.com_wallpaper (2).jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@font-face {
+    font-family: 'NicoMoji';
+    src: url('/fonts/Nico-Moji/nicomoji/NicoMoji-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 .navbar {
@@ -24,7 +38,7 @@
     border-top-right-radius: 10px;
 }
 
-.navbar #more .dropbtn{
+.navbar #more .dropbtn {
     position: relative;
     display: inline-block;
     cursor: pointer;
@@ -87,12 +101,6 @@
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
     background: rgba(255, 255, 255, 0.443);
-}
-@font-face {
-    font-family: 'NicoMoji';
-    src: url('/images/Nico-Moji/nicomoji/NicoMoji-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
 }
 
 .navbar #site-name {
@@ -246,4 +254,17 @@ body {
 .card:hover .card-image {
     filter: brightness(70%);
     /* Decrease brightness on hover */
+}
+
+.card-container {
+    background: transparent;
+    backdrop-filter: blur(10px);
+    height: 80vh;
+    width: 90vw;
+    margin: auto 5vw;
+    margin-top: 45px;
+    border-radius: 10px;
+    box-shadow: 0px 7px 7px 0px black;
+    border: 1px solid white;
+    overflow: scroll;
 }
