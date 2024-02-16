@@ -1,3 +1,5 @@
+// This code is created to show how the data is stored in the local repository using multer
+
 const multer = require('multer');
 const { v4:uuidv4} = require('uuid')
 const path = require("path")

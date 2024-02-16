@@ -4,13 +4,14 @@ const { ObjectId } = require('mongodb');
 let userModel = require('./users')
 let postModel = require('./post')
 const passport = require('passport')
-const upload = require("./multer")
+const multer = require("multer")
 const localStrategy = require('passport-local');
 const flash = require('connect-flash');
 const session = require('express-session');
+const storage = require('./multerConfig');
 
 const app = express();
-
+const upload = multer({ storage: storage });
 app.use(session({
   secret: 'secret',
   resave: true,
@@ -55,9 +56,8 @@ router.get('/delete/:id', isLoggedIn, async function (req, res, next) {
 
 // Route to upload
 router.post('/upload', isLoggedIn, upload.single("file"), async function (req, res, next) {
-  if (!req.file) {
-    res.status(404).send("no files were given")
-  }
+  const imageUrl = req.file.secure_url;
+  console.log('Image uploaded successfully!');
   const user = await userModel.findOne({ username: req.session.passport.user })
   const postdata = await postModel.create({
     image: req.file.filename,
@@ -101,7 +101,6 @@ router.get('/logout', function (req, res, next) {
 router.post("/register", function (req, res) {
   const { username, email, password, fullname } = req.body;
   const userData = new userModel({ username, email, fullname });
-
   userModel.register(userData, password)
     .then(function () {
       passport.authenticate("local")(req, res, function () {
