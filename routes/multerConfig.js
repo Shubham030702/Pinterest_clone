@@ -8,5 +8,14 @@ const storage = new CloudinaryStorage({
     public_id: (req, file) => new Date().toISOString() + '-avatar' 
   }
 });
-
-module.exports = storage;
+const display = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'display picture', 
+    public_id: (req, file) => new Date().toISOString() + '-avatar' 
+  }
+});
+module.exports = {
+  storage,
+  display
+};

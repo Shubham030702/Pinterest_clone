@@ -8,10 +8,11 @@ const multer = require("multer")
 const localStrategy = require('passport-local');
 const flash = require('connect-flash');
 const session = require('express-session');
-const storage = require('./multerConfig');
+const {storage , display} = require('./multerConfig');
 
 const app = express();
 const upload = multer({ storage: storage });
+const store = multer({ storage: display });
 app.use(session({
   secret: 'secret',
   resave: true,
@@ -69,7 +70,7 @@ router.post('/upload', isLoggedIn, upload.single("file"), async function (req, r
   res.redirect("/profile")
 });
 
-router.post('/editprofile', isLoggedIn, upload.single("file"), async function (req, res) {
+router.post('/editprofile', isLoggedIn, store.single("file"), async function (req, res) {
   try {
       const user = await userModel.findOne({ username: req.session.passport.user });
       if (req.body.bio) {
