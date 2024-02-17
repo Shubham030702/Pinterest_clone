@@ -33,26 +33,30 @@
     <div class="containerpers">
       <div class="cardpers">
         <div class="profile-picture">
-          <img src="/images/human_11305946.png" alt="Profile Picture">
+          <img src='https://res.cloudinary.com/dwzejho0w/image/upload/v1708196756/<%=user.dp%>' alt="Profile-profile">
         </div>
         <h2 class="name">
           <%= user.fullname %>
         </h2>
         <h3 class="username">@<%=user.username%>
         </h3>
-        <p class="tagline">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-        <p class="description">some description</p>
+        <p class="tagline"><%=user.bio%></p>
+        <p class="description"><%=user.description%></p>
         <button class="edit" id="edit">Edit Profile</button>
 
         <div id="myModal" class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
-            <form id="profile-form" action="/submit_profile" method="post">
-              <div>
+            <form id="profile-form" action="/editprofile" method="post" enctype="multipart/form-data">
+              <div class="boundary">
+                <label for="bio">upload pfp:</label><br>
+                <input type="file" name="file" id="image-input" class="displaypic">
+              </div>
+              <div class="boundary">
                 <label for="bio">Bio:</label><br>
                 <textarea id="bio" name="bio"  placeholder="Enter your bio"></textarea>
               </div>
-              <div>
+              <div class="boundary">
                 <label for="description">Description:</label><br>
                 <textarea id="description" name="description"  placeholder="Enter description"></textarea>
               </div>

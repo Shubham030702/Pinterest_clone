@@ -69,6 +69,28 @@ router.post('/upload', isLoggedIn, upload.single("file"), async function (req, r
   res.redirect("/profile")
 });
 
+router.post('/editprofile', isLoggedIn, upload.single("file"), async function (req, res) {
+  try {
+      const user = await userModel.findOne({ username: req.session.passport.user });
+      if (req.body.bio) {
+          user.bio = req.body.bio;
+      }
+      if (req.body.description) {
+          user.description = req.body.description;
+      }
+      if (req.file) {
+        const imageUrl = req.file.secure_url;
+          user.dp=req.file.filename;
+      }
+      await user.save();
+      res.redirect("/profile");
+  } catch (error) {
+      console.error("Error updating profile:", error);
+      res.status(500).send("Internal Server Error");
+  }
+});
+
+
 router.get('/login', function (req, res, next) {
   res.render('login', { error: req.flash('error') });
 });

@@ -318,6 +318,7 @@ body {
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
+    color: black;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
@@ -353,12 +354,15 @@ body {
   }
   
   label {
+    width: 100%;
     font-weight: bold;
+    text-align: left;
+    margin: 3px;
   }
   
   textarea {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
@@ -374,4 +378,9 @@ body {
   
   button:hover {
     background-color: #0056b3;
+  }
+  .boundary{
+    margin: 3px;
+    border-radius: 1%;
+    backdrop-filter: blur(10%);
   }
