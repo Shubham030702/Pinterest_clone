@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -41,19 +42,38 @@
         </h3>
         <p class="tagline">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
         <p class="description">some description</p>
-        <button class="edit">Edit Profile</button>
+        <button class="edit" id="edit">Edit Profile</button>
+
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="profile-form" action="/submit_profile" method="post">
+              <div>
+                <label for="bio">Bio:</label><br>
+                <textarea id="bio" name="bio"  placeholder="Enter your bio"></textarea>
+              </div>
+              <div>
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description"  placeholder="Enter description"></textarea>
+              </div>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
     <div class="container">
       <div class="cards flex">
         <% user.posts.forEach(function(post){%>
           <div class="card">
-            <img src="https://res.cloudinary.com/dwzejho0w/image/upload/v1708087070/<%=post.image%>" class="card-img-top" alt="...">
+            <img src="https://res.cloudinary.com/dwzejho0w/image/upload/v1708087070/<%=post.image%>"
+              class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">
                 <%=post.imageText%>
               </h5>
-              <button class="delete" onclick="window.location.href='/delete/<%=post._id%>'"><i class="material-icons">delete</i>
+              <button class="delete" onclick="window.location.href='/delete/<%=post._id%>'"><i
+                  class="material-icons">delete</i>
               </button>
             </div>
           </div>

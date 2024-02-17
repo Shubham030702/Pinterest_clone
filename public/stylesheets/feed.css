@@ -194,7 +194,7 @@ body {
     height: auto;
     max-width: 330px;
     position: relative;
-    overflow: hidden;
+    overflow: scroll;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
