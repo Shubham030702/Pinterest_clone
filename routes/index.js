@@ -8,7 +8,7 @@ const multer = require("multer")
 const localStrategy = require('passport-local');
 const flash = require('connect-flash');
 const session = require('express-session');
-const {storage , display} = require('./multerConfig');
+const { storage, display } = require('./multerConfig');
 
 const app = express();
 const upload = multer({ storage: storage });
@@ -72,22 +72,22 @@ router.post('/upload', isLoggedIn, upload.single("file"), async function (req, r
 
 router.post('/editprofile', isLoggedIn, store.single("file"), async function (req, res) {
   try {
-      const user = await userModel.findOne({ username: req.session.passport.user });
-      if (req.body.bio) {
-          user.bio = req.body.bio;
-      }
-      if (req.body.description) {
-          user.description = req.body.description;
-      }
-      if (req.file) {
-        const imageUrl = req.file.secure_url;
-          user.dp=req.file.filename;
-      }
-      await user.save();
-      res.redirect("/profile");
+    const user = await userModel.findOne({ username: req.session.passport.user });
+    if (req.body.bio) {
+      user.bio = req.body.bio;
+    }
+    if (req.body.description) {
+      user.description = req.body.description;
+    }
+    if (req.file) {
+      const imageUrl = req.file.secure_url;
+      user.dp = req.file.filename;
+    }
+    await user.save();
+    res.redirect("/profile");
   } catch (error) {
-      console.error("Error updating profile:", error);
-      res.status(500).send("Internal Server Error");
+    console.error("Error updating profile:", error);
+    res.status(500).send("Internal Server Error");
   }
 });
 
@@ -108,12 +108,22 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
   res.render("profile", { user })
 });
 
+router.get('/like/:id', isLoggedIn, async function (req, res, next) {
+  const oid = new ObjectId(req.params.id)
+  const post = await postModel.findOne({_id:oid});
+  const user = await userModel.findOne({ username: req.session.passport.user })
+  post.likes.push(user._id);
+  post.save();
+  res.redirect('/feed');
+})
+
 router.post('/login', passport.authenticate("local", {
   successRedirect: "/feed",
   failureRedirect: "/login",
   failureFlash: true
 }), function (req, res) {
 });
+
 router.get('/logout', function (req, res, next) {
   req.logout(function (err) {
     if (err) { return next(err); }

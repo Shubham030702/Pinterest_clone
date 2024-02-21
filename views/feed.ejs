@@ -29,29 +29,54 @@
       </div>
     </div>
   </div>
+  <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <div class="innermodal">
+        <div class="left"><img id="modalImage" src="" alt="Modal Image"></div>
+        <div class="right">
+          <div class="prof">
+            <div class="dpi">
+              <img id="dpimage"
+                src=""
+                alt="">
+            </div>
+            <div class="namee" id="username"></div>
+          </div>
+          <div class="innerright">
+            <div class="like IR"><img src="images/facebook-reactions_11820123.png" alt="" onclick="navigateAndExecute()"><br>
+              Likes
+            </div>
+            <div class="comment IR"><img src="images/pngwing.com.png" alt=""><br>
+              Comments
+            </div>
+            <div class="download IR"><img src="images/download_10068752.png" alt=""  onclick="download()"><br>
+              Download
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </div>
   <div class="card-container">
-    <div class="cards flex" onclick="showModal()">
+    <div class="cards flex"  >
       <% post.forEach(function(post){%>
-          <div class="card" >
+          <div class="card" onclick="openModal('<%=post.image%>','<%=post.user.dp%>','<%=post.user.fullname%>','<%=post._id%>')">
             <div class="overlay-text top-text">
               <div class="dp">
                 <img
                   src="https://res.cloudinary.com/dwzejho0w/image/upload/v1708192875/<%=post.user.dp%>"
                   alt="">
               </div>
-              <div class="name" onclick="window.location.href='/user/<%=post.user%>'">
+              <div class="name">
                 <%=post.user.fullname%>
               </div>
             </div>
             <img class="card-image" src="https://res.cloudinary.com/dwzejho0w/image/upload/v1708087070/<%=post.image%>" alt="Card Image">
             <div class="overlay-text bottom-text">
               <%=post.imageText%>
-            </div>
-          </div>
-          <div class="modal-container" id="modalContainer">
-            <div class="modal-content">
-              <span class="close" onclick="hideModal()">&times;</span>
-              <a href="/images/uploads/<%=post.image%>" download="<%=post.imageText%>.zip"><img src="/images/download_10068752.png" alt="download"></a>
             </div>
           </div>
           <%})%>

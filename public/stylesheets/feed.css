@@ -6,7 +6,7 @@
     font-optical-sizing: auto;
 }
 
-body{
+body {
     background-image: url('/images/wallpaperflare.com_wallpaper (2).jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -159,16 +159,55 @@ body {
     display: block;
 }
 
-.name {
+.dpi {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    left: 10px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 3.5px;
+}
+
+.dpi img {
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+
+.prof {
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 15%;
+    justify-content: center;
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+.dp {
+    margin-right: 10px;
+    /* Add margin for spacing */
+}
+
+.namee {
+    font-size: 40px;
     text-shadow: 10px;
     margin-left: 25px;
-    color: blanchedalmond;
+    color: rgb(38, 38, 38);
+}
+
+.name {
+    font-size: 20px;
+    text-shadow: 10px;
+    margin-left: 25px;
+    color: rgb(38, 38, 38);
 }
 
 .name:hover {
     text-decoration: underline;
     margin-left: 25px;
-    color: rgba(244, 255, 205, 0.637);
+    color: rgba(34, 34, 33, 0.637);
 }
 
 .bottom-text {
@@ -215,7 +254,8 @@ body {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background:transparent;
+    backdrop-filter: blur(10px);
     padding: 20px;
     text-align: center;
     border-radius: 10px;
@@ -267,4 +307,124 @@ body {
     box-shadow: 0px 7px 7px 0px black;
     border: 1px solid white;
     overflow: scroll;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: hidden;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    margin: 10% auto;
+    /* 15% from the top and centered */
+    width: 60%;
+    /* Adjust width as needed */
+    height: 70%;
+    border-radius: 10px;
+    position: relative;
+    animation-name: modalopen;
+    animation-duration: 0.5s;
+    /* Position relative for absolute positioning of close button */
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    /* Adjust top position as needed */
+    right: 10px;
+    /* Adjust right position as needed */
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+/* Inner Modal */
+.innermodal {
+    display: flex;
+    height: 100%;
+}
+
+/* Left side */
+.left {
+    flex: 1;
+    height: 100%;
+}
+
+.left img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 10% auto;
+    /* Center the image horizontally */
+    border-radius: 10px;
+}
+
+/* Right side */
+.right {
+    flex: 1;
+    position: relative;
+    background: #4ee8fdc3;
+    height: 100%;
+    width: 40%;
+    margin: auto auto ;
+    border: 1px solid white;
+    border-radius: 10%;
+    margin-left: 5%;
+}
+
+@keyframes modalopen {
+    from {
+        width: 0%;
+        /* Adjust width as needed */
+        height: 0%;
+    }
+
+    to {
+        width: 60%;
+    /* Adjust width as needed */
+    height: 70%;
+    }
+}
+
+.innerright{
+    margin-top: 10%;
+    padding-left: 10%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    height: 75%;
+}
+
+.IR{
+    margin: 25% 5%;
+    height: 18%;
+    width: 47%;
+    justify-content: center;
+}
+.IR img{
+    height: 100%;
+    width: 100%;
+    position: relative;
 }
