@@ -55,20 +55,40 @@ router.get('/delete/:id', isLoggedIn, async function (req, res, next) {
   res.redirect("/profile")
 })
 
+// route to like
+router.get('/like/:id', isLoggedIn, async function (req, res, next) {
+  const oid = new ObjectId(req.params.id)
+  const post = await postModel.findOne({ _id: oid });
+  const user = await userModel.findOne({ username: req.session.passport.user })
+  const userIndex = post.likes.indexOf(user._id);
+  if (userIndex !== -1) {
+    post.likes.splice(userIndex, 1);
+  } else {
+    post.likes.push(user._id);
+  }
+  post.save();
+})
+
 // Route to upload
 router.post('/upload', isLoggedIn, upload.single("file"), async function (req, res, next) {
-  const imageUrl = req.file.secure_url;
-  console.log('Image uploaded successfully!');
-  const user = await userModel.findOne({ username: req.session.passport.user })
-  const postdata = await postModel.create({
-    image: req.file.filename,
-    imageText: req.body.filecaption,
-    user: user._id
-  })
-  user.posts.push(postdata._id)
-  await user.save()
-  res.redirect("/profile")
+  try {
+    const imageUrl = req.file.secure_url;
+    console.log('Image uploaded successfully!');
+    const user = await userModel.findOne({ username: req.session.passport.user });
+    const postdata = await postModel.create({
+      image: req.file.filename,
+      imageText: req.body.filecaption,
+      user: user._id
+    });
+    user.posts.push(postdata._id);
+    await user.save();
+    res.redirect('/profile')
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "An error occurred while processing your request" });
+  }
 });
+
 
 router.post('/editprofile', isLoggedIn, store.single("file"), async function (req, res) {
   try {
@@ -108,14 +128,22 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
   res.render("profile", { user })
 });
 
-router.get('/like/:id', isLoggedIn, async function (req, res, next) {
-  const oid = new ObjectId(req.params.id)
-  const post = await postModel.findOne({_id:oid});
-  const user = await userModel.findOne({ username: req.session.passport.user })
-  post.likes.push(user._id);
-  post.save();
-  res.redirect('/feed');
-})
+router.post('/like/:id', isLoggedIn, async function (req, res, next) {
+  const oid = new ObjectId(req.params.id);
+  const post = await postModel.findOne({ _id: oid });
+  const user = await userModel.findOne({ username: req.session.passport.user });
+  if (!post || !user) {
+    return res.status(404).json({ error: "Post or user not found" });
+  }
+  const likeIndex = post.likes.findIndex(element => element.equals(user._id));
+  if (likeIndex !== -1) {
+    post.likes.splice(likeIndex, 1);
+  } else {
+    post.likes.push(user._id);
+  }
+  await post.save();
+  res.json({ success: true });
+});
 
 router.post('/login', passport.authenticate("local", {
   successRedirect: "/feed",

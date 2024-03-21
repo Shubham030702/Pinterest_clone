@@ -29,62 +29,51 @@
       </div>
     </div>
   </div>
+  </div>
   <div id="myModal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
     <div class="modal-content">
-      <div class="innermodal">
-        <div class="left"><img id="modalImage" src="" alt="Modal Image"></div>
-        <div class="right">
-          <div class="prof">
-            <div class="dpi">
-              <img id="dpimage"
-                src=""
-                alt="">
-            </div>
-            <div class="namee" id="username"></div>
-          </div>
-          <div class="innerright">
-            <div class="like IR"><img src="images/facebook-reactions_11820123.png" alt="" onclick="navigateAndExecute()"><br>
-              Likes
-            </div>
-            <div class="comment IR"><img src="images/pngwing.com.png" alt=""><br>
-              Comments
-            </div>
-            <div class="download IR"><img src="images/download_10068752.png" alt=""  onclick="download()"><br>
-              Download
-            </div>
-          </div>
-        </div>
+      <img id="modalImage" src="" alt="">
+      <span id="nooflikes">0</span>Likes <br>
+      <div class="postname">
+        <span id="modalName"></span> : "<span id="modalDescription"></span>"
+      </div>
+      <div class="likesection">
+        <i class="fa-regular fa-heart fa-2xl" ></i>
+        <i class="fa-solid fa-expand fa-2xl"></i>
+        <i class="fa-solid fa-download fa-2xl"></i>
       </div>
     </div>
   </div>
-  
-  </div>
   <div class="card-container">
-    <div class="cards flex"  >
+    <div class="cards flex">
       <% post.forEach(function(post){%>
-          <div class="card" onclick="openModal('<%=post.image%>','<%=post.user.dp%>','<%=post.user.fullname%>','<%=post._id%>')">
-            <div class="overlay-text top-text">
-              <div class="dp">
-                <img
-                  src="https://res.cloudinary.com/dwzejho0w/image/upload/v1708192875/<%=post.user.dp%>"
-                  alt="">
-              </div>
-              <div class="name">
-                <%=post.user.fullname%>
-              </div>
+        <div class="card" id="card">
+          <div class="overlay-text top-text">
+            <div class="dp">
+              <img src="https://res.cloudinary.com/dwzejho0w/image/upload/v1708192875/<%=post.user.dp%>" alt="">
             </div>
-            <img class="card-image" src="https://res.cloudinary.com/dwzejho0w/image/upload/v1708087070/<%=post.image%>" alt="Card Image">
-            <div class="overlay-text bottom-text">
-              <%=post.imageText%>
+            <div class="name">
+              <%=post.user.fullname%>
             </div>
           </div>
-          <%})%>
+          <img class="card-image" src="https://res.cloudinary.com/dwzejho0w/image/upload/v1708087070/<%=post.image%>"
+            alt="Card Image">
+          <div class="overlay-text bottom-text">
+            <%=post.imageText%>
+          </div>
+          <div class="likes" hidden>
+              <%=post.id%>
+          </div>
+          <div class="likesnumber" hidden>
+              <%=post.likes.length%>
+          </div>
         </div>
+        <%})%>
+    </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <script src="app.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="/javascripts/feed.js"></script>
+  <script src="https://kit.fontawesome.com/cf797f79f1.js" crossorigin="anonymous"></script>
 </body>
 
 

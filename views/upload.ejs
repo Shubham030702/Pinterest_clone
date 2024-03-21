@@ -16,8 +16,7 @@
         <div class="outer-container">
             <div class="inner-container">
                 <div class="left-section">
-                    <form class="uploadsection hidden" id="uploadsection" action="/upload" method="post"
-                        enctype="multipart/form-data">
+                    <form class="uploadsection hidden" action="/upload" id="uploadsection" method="post" enctype="multipart/form-data">
                         <input type="text" name="filecaption" placeholder="Give Caption">
                         <input type="file" name="file" id="image-input">
                         <input type="submit">
@@ -29,5 +28,6 @@
             </div>
         </div>
         <script src="/javascripts/upload.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </body>
 </html>

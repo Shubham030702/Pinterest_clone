@@ -14,30 +14,48 @@ document.addEventListener('click', function (e) {
   }
 });
 
-var modal = document.getElementById("myModal");
+const modal = document.getElementById("myModal");
 
-var modalImage = document.getElementById("modalImage");
+const span = document.getElementsByClassName("close")[0];
 
-var a;
-function openModal(imageUrl, dpUrl, fullname, id) {
-  modalImage.src = "https://res.cloudinary.com/dwzejho0w/image/upload/v1708087070/" + imageUrl;
-  dpimage.src = "https://res.cloudinary.com/dwzejho0w/image/upload/v1708087070/" + dpUrl;
-  username.innerHTML = fullname;
-  modal.style.display = "block";
-  a=id;
-}
+const array = document.querySelectorAll('.card');
+var id;
 
-// Function to close the modal
-function closeModal() {
-  modal.style.display = "none";
-}
+array.forEach(e => {
+  e.addEventListener('click', () => {
+    const name = e.querySelector('.name').textContent;
+    const description = e.querySelector('.bottom-text').textContent;
+    const imageSrc = e.querySelector('.card-image').src;
+    const likes=e.querySelector('.likesnumber').textContent;
+    id = e.querySelector('.likes').textContent;
+    document.getElementById('nooflikes').textContent=likes;
+    document.getElementById('modalName').textContent = name;
+    document.getElementById('modalDescription').textContent = description;
+    document.getElementById('modalImage').src = imageSrc;
+    modal.style.display = "block";
+  });
+});
 
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
 
-function navigateAndExecute() {
-  window.location.href = '/like/'+a;
-}
+$(document).ready(function () {
+  $('.fa-heart').click(function () {
+    var postId = id;
+    postId = postId.trim();
+    console.log(postId);
+    $.ajax({
+      url: '/like/' + postId,
+      type: 'POST',
+      success: function (response) {
+        console.log('Post liked successfully!');
+      },
+      error: function (xhr, status, error) {
+        console.error('Error:', error);
+      }
+    });
+  });
+});
