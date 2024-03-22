@@ -33,15 +33,21 @@
   <div id="myModal" class="modal">
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
-      <span id="nooflikes">0</span>Likes <br>
+      <span id="nooflikes">0</span><h7 onclick="openlikes()">Likes </h7><br>
       <div class="postname">
         <span id="modalName"></span> : "<span id="modalDescription"></span>"
       </div>
       <div class="likesection">
-        <i class="fa-regular fa-heart fa-2xl" ></i>
+        <i class="fa-regular fa-heart fa-2xl like-icon" onclick="toggleLike(this)" ></i>
         <i class="fa-solid fa-expand fa-2xl"></i>
         <i class="fa-solid fa-download fa-2xl"></i>
       </div>
+      <div id="likedby" style="display: none;">
+        <h6>Liked By:-</h6><br>
+        <div id="users">
+
+        </div>
+      </div>  
     </div>
   </div>
   <div class="card-container">
@@ -66,6 +72,11 @@
           </div>
           <div class="likesnumber" hidden>
               <%=post.likes.length%>
+          </div>
+          <div class="usersliked" hidden>
+            <% post.likes.forEach(function(like){%>
+              <%=like.fullname%> <br>
+              <%})%>
           </div>
         </div>
         <%})%>

@@ -40,8 +40,9 @@ router.get('/user/:id', async function (req, res, next) {
 router.get('/feed', isLoggedIn, async function (req, res, next) {
   const postdata = await postModel.find({
     user: { $exists: true }
-  }).populate("user")
-  res.render("feed", { post: postdata });
+  }).populate("user").populate("likes")
+  // res.send(postdata)
+  res.render("feed", { post: postdata});
 });
 
 // Route to delete 
@@ -56,18 +57,28 @@ router.get('/delete/:id', isLoggedIn, async function (req, res, next) {
 })
 
 // route to like
-router.get('/like/:id', isLoggedIn, async function (req, res, next) {
-  const oid = new ObjectId(req.params.id)
-  const post = await postModel.findOne({ _id: oid });
-  const user = await userModel.findOne({ username: req.session.passport.user })
-  const userIndex = post.likes.indexOf(user._id);
-  if (userIndex !== -1) {
-    post.likes.splice(userIndex, 1);
-  } else {
-    post.likes.push(user._id);
+router.post('/like/:id', isLoggedIn, async function (req, res, next) {
+  try {
+    const oid = new ObjectId(req.params.id);
+    const post = await postModel.findOne({ _id: oid });
+    const user = await userModel.findOne({ username: req.session.passport.user });
+    const userIndex = post.likes.indexOf(user._id);
+
+    if (userIndex !== -1) {
+      post.likes.splice(userIndex, 1);
+    } else {
+      post.likes.push(user._id);
+    }
+
+    await post.save();
+
+    res.json({ likes: post.likes }); // Send only th array
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'An error occurred while processing your request.' });
   }
-  post.save();
-})
+});
+
 
 // Route to upload
 router.post('/upload', isLoggedIn, upload.single("file"), async function (req, res, next) {

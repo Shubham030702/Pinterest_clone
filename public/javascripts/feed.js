@@ -20,15 +20,16 @@ const span = document.getElementsByClassName("close")[0];
 
 const array = document.querySelectorAll('.card');
 var id;
-
 array.forEach(e => {
   e.addEventListener('click', () => {
     const name = e.querySelector('.name').textContent;
     const description = e.querySelector('.bottom-text').textContent;
     const imageSrc = e.querySelector('.card-image').src;
-    const likes=e.querySelector('.likesnumber').textContent;
+    const numberoflikes = e.querySelector('.likesnumber').textContent;
+    const likes = e.querySelector('.usersliked').textContent;
     id = e.querySelector('.likes').textContent;
-    document.getElementById('nooflikes').textContent=likes;
+    document.getElementById('users').textContent = likes;
+    document.getElementById('nooflikes').textContent = numberoflikes;
     document.getElementById('modalName').textContent = name;
     document.getElementById('modalDescription').textContent = description;
     document.getElementById('modalImage').src = imageSrc;
@@ -59,3 +60,9 @@ $(document).ready(function () {
     });
   });
 });
+
+const open = document.getElementById('likedby');
+
+function openlikes() {
+  open.style.display = "block";
+}
