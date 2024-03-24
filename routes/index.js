@@ -58,26 +58,22 @@ router.get('/delete/:id', isLoggedIn, async function (req, res, next) {
 
 // route to like
 router.post('/like/:id', isLoggedIn, async function (req, res, next) {
-  try {
-    const oid = new ObjectId(req.params.id);
-    const post = await postModel.findOne({ _id: oid });
-    const user = await userModel.findOne({ username: req.session.passport.user });
-    const userIndex = post.likes.indexOf(user._id);
-
-    if (userIndex !== -1) {
-      post.likes.splice(userIndex, 1);
-    } else {
-      post.likes.push(user._id);
-    }
-
-    await post.save();
-
-    res.json({ likes: post.likes }); // Send only th array
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({ error: 'An error occurred while processing your request.' });
+  const oid = new ObjectId(req.params.id);
+  const post = await postModel.findOne({ _id: oid }).populate('likes', 'fullname'); // Populate likes with user's fullname
+  const user = await userModel.findOne({ username: req.session.passport.user });
+  if (!post || !user) {
+    return res.status(404).json({ error: "Post or user not found" });
   }
+  const likeIndex = post.likes.findIndex(element => element.equals(user._id));
+  if (likeIndex !== -1) {
+    post.likes.splice(likeIndex, 1);
+  } else {
+    post.likes.push(user._id);
+  }
+  await post.save();
+  res.json({ success: true, post: post });
 });
+
 
 
 // Route to upload
@@ -137,23 +133,6 @@ router.get('/profile', isLoggedIn, async function (req, res, next) {
   })
     .populate("posts")
   res.render("profile", { user })
-});
-
-router.post('/like/:id', isLoggedIn, async function (req, res, next) {
-  const oid = new ObjectId(req.params.id);
-  const post = await postModel.findOne({ _id: oid });
-  const user = await userModel.findOne({ username: req.session.passport.user });
-  if (!post || !user) {
-    return res.status(404).json({ error: "Post or user not found" });
-  }
-  const likeIndex = post.likes.findIndex(element => element.equals(user._id));
-  if (likeIndex !== -1) {
-    post.likes.splice(likeIndex, 1);
-  } else {
-    post.likes.push(user._id);
-  }
-  await post.save();
-  res.json({ success: true });
 });
 
 router.post('/login', passport.authenticate("local", {
