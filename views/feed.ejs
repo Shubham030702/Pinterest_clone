@@ -41,7 +41,7 @@
         </div>
       </div>  
       <div class="postname">
-        <span id="modalName"></span> : "<span id="modalDescription"></span>"
+        <span id="modalName" onclick="openUser()"></span> : "<span id="modalDescription"></span>"
       </div>
       <div class="likesection">
         <i class="fa-regular fa-heart fa-2xl like-icon"  ></i>
@@ -56,7 +56,7 @@
         <div class="card" id="card">
           <div class="overlay-text top-text">
             <div class="dp">
-              <img src="https://res.cloudinary.com/dwzejho0w/image/upload/v1708192875/<%=post.user.dp%>" alt="">
+             <img id="DpImage" src="https://res.cloudinary.com/dwzejho0w/image/upload/v1708192875/<%=post.user.dp%>" alt="">
             </div>
             <div class="name" onclick="window.location.href='/user/<%=post.user._id%>'">
               <%=post.user.fullname%>
@@ -69,6 +69,9 @@
           </div>
           <div class="likes" hidden>
               <%=post.id%>
+          </div>
+          <div class="userofpost" hidden>
+              <%=post.user.id%>
           </div>
           <div class="likesnumber" id="lnumber" hidden >
               <%=post.likes.length%>

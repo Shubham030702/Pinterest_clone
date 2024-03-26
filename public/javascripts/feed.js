@@ -23,6 +23,14 @@ const array = document.querySelectorAll('.card');
 var id;
 let imageSrc;
 let description;
+var userid;
+
+document.getElementById("DpImage").addEventListener("error", function () {
+  console.log("Fallback image loaded.");
+  this.src = "/images/human_11305946.png";
+  this.alt = "Fallback Image";
+});
+
 
 array.forEach(e => {
   e.addEventListener('click', () => {
@@ -32,6 +40,7 @@ array.forEach(e => {
     const numberoflikes = e.querySelector('.likesnumber').innerHTML;
     const likes = e.querySelector('.usersliked').innerHTML;
     id = e.querySelector('.likes').textContent;
+    userid = e.querySelector('.userofpost').textContent;
     document.getElementById('users').innerHTML = likes;
     document.getElementById('nooflikes').innerHTML = numberoflikes;
     document.getElementById('modalName').textContent = mname;
@@ -40,6 +49,12 @@ array.forEach(e => {
     modal.style.display = "block";
   });
 });
+
+function openUser() {
+  const userId=userid.trim();
+  console.log(userId);
+  window.location.href='/user/'+userId;
+}
 
 const open = document.getElementById('likedby');
 
@@ -80,26 +95,22 @@ function downloadImage(url, filename) {
   var ctx = canvas.getContext('2d');
   var img = new Image();
   img.crossOrigin = 'Anonymous';
-
-  img.onload = function() {
+  img.onload = function () {
     canvas.width = img.width;
     canvas.height = img.height;
     ctx.drawImage(img, 0, 0);
-    
     var jpegData = canvas.toDataURL('image/jpeg');
-    
     var anchor = document.createElement('a');
     anchor.href = jpegData;
     anchor.download = filename;
     anchor.click();
   };
-
   img.src = url;
 }
 
-document.getElementById("downloadButton").addEventListener("click", function() {
+document.getElementById("downloadButton").addEventListener("click", function () {
   var imageURL = imageSrc;
-  var imageName = description+"pixelvista.jpeg";
+  var imageName = description + "pixelvista.jpeg";
   downloadImage(imageURL, imageName);
 });
 

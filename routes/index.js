@@ -32,6 +32,8 @@ router.get('/', function (req, res) {
 // Route to user 
 router.get('/user/:id', async function (req, res, next) {
   const oid = new ObjectId(req.params.id)
+  const user = await userModel.findOne({username: req.session.passport.user})
+  if(user._id == req.params.id) res.redirect("/profile");
   const userData = await userModel.findOne({ _id: oid }).populate("posts")
   res.render("user", { user: userData })
 });
