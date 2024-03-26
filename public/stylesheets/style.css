@@ -29,8 +29,8 @@ body {
 .content-hovered {
   width: 0;
   height: 0;
-  border-left: 10px solid ;
-  border-right: 10px solid ;
+  border-left: 10px solid;
+  border-right: 10px solid;
   border-bottom: 20px solid #3498db;
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   z-index: 1;
@@ -224,4 +224,52 @@ form input[type="submit"]:hover {
 body {
   opacity: 0;
   transition: opacity 2s ease-out;
+}
+
+@media screen and (max-width: 450px) {
+  .custom-cursor{
+    display: none;
+  }
+  .container{
+    display:block;
+  }
+  .left {
+    height: 100%;
+    width: 100%;
+    margin: 0 4vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 55px;
+    color: black;
+    margin: 5vh 0;
+    animation: titlegiggle 4s ease-in 0.2s infinite alternate-reverse;
+  }
+
+  .subtitle {
+    font-size: 40px;
+    color: #ffffffd0;
+    margin-bottom: 5vh;
+  }
+
+  .content {
+    height: 70vh;
+    margin: 0 4vw;
+    width: 90%;
+    background-color: rgba(37, 69, 90, 0.441);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: scroll;
+    animation: pulse 1.5s ease-in-out infinite alternate;
+    border-radius: 10px;
+  }
+
+  .content a {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 10px 40px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.87);
+  }
 }

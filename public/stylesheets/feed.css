@@ -279,7 +279,7 @@ body {
     display: none;
     overflow: hidden;
     color: aqua;
-    background:transparent;
+    background: transparent;
     backdrop-filter: blur(10px);
 }
 
@@ -310,6 +310,7 @@ body {
     height: 12vh;
     align-items: center;
     padding: 5px;
+    overflow: scroll;
 }
 
 .likesection {
@@ -350,26 +351,57 @@ body {
     overflow: hidden;
 }
 
-.likesection i:hover{
-    cursor:pointer;
-    scale:1.1;
+.likesection i:hover {
+    cursor: pointer;
+    scale: 1.1;
 }
 
 .fa-comment {
-    /* Add any additional styling for the comment icon */
-    color: blue; /* Adjust color as needed */
-    transition: margin-right 0.5s ease; /* Transition for sliding animation */
+    color: blue;
+    transition: margin-right 0.5s ease;
     cursor: pointer;
-  }
-  
-  .new-modal {
-    /* Add any styling for the new modal */
-    width: 200px; /* Adjust width as needed */
-    height: 200px; /* Adjust height as needed */
-    background-color: red; /* Adjust color as needed */
+}
+
+.new-modal {
+    width: 200px;
+    height: 200px;
+    background-color: red;
     position: fixed;
     right: 20px;
     top: 20px;
     display: none;
-  }
-  
+}
+
+@media screen and (max-width: 450px) {
+    .navbar #more .dropbtn {
+        font-size: 12px;
+    }
+
+    .feed {
+        font-size: 12px;
+    }
+
+    .modal-content {
+        height: 60%;
+        width: 80%;
+        background: #000000cb;
+        position: relative;
+        left: 10%;
+        top: 20%;
+        border-radius: 0%;
+        overflow: hidden;
+    }
+
+    #modalName {
+        display: inline-block;
+        font-weight: 600;
+        text-decoration: underline;
+        font-size: 17px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    #modalDescription {
+        font-size: 17px;
+    }
+}

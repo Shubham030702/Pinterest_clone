@@ -211,6 +211,7 @@ body {
     border: 1px solid white;
     color: white;
 }
+
 .flex {
     display: flex;
     flex-wrap: wrap;
@@ -284,7 +285,7 @@ body {
     box-shadow: 0 4px 8px rgba(59, 59, 59, 0.646);
 }
 
-.container{
+.container {
     height: 70vh;
     margin: 0 4vh;
     border-radius: 5px;
@@ -294,94 +295,166 @@ body {
     overflow: scroll;
     padding: 4vh;
 }
-.card{
+
+.card {
     margin-top: 10px;
     width: 12vw;
     height: auto;
     background: transparent;
 }
-.card-body{
+
+.card-body {
     height: 10vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-.card-title{
+
+.card-title {
     overflow: scroll;
     height: 9.3vh;
 }
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
     color: black;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: hidden; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: hidden;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
     background-color: #fefefe;
-    margin: 10% auto; /* 15% from the top and centered */
+    margin: 10% auto;
+    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* Close Button */
-  .close {
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* Close Button */
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
-  .form-group {
+}
+
+.form-group {
     margin-bottom: 20px;
-  }
-  
-  label {
+}
+
+label {
     width: 100%;
     font-weight: bold;
     text-align: left;
     margin: 3px;
-  }
-  
-  textarea {
+}
+
+textarea {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  button {
+}
+
+button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #0056b3;
-  }
-  .boundary{
+}
+
+.boundary {
     margin: 3px;
     border-radius: 1%;
     backdrop-filter: blur(10%);
-  }
+}
+
+@media screen and (max-width: 450px) {
+    .navbar #more .dropbtn {
+        font-size: 12px;
+    }
+
+    .feed {
+        font-size: 12px;
+    }
+
+    #main {
+        display: block;
+        height: 100%;
+        width: 85vw;
+        margin: 10vh 7.5vw;
+    }
+
+    body {
+        overflow: auto;
+    }
+
+    .containerpers {
+        height: 65vh;
+        width: 100%;
+        backdrop-filter: blur(20px);
+        background: transparent;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        border: 1px solid white;
+        color: white;
+        margin-bottom: 5vh;
+        overflow: scroll;
+    }
+
+    .container {
+        height: 70vh;
+        border-radius: 5px;
+        margin: 0;
+        background: transparent;
+        backdrop-filter: blur(15px);
+        border: 1px solid white;
+        overflow: scroll;
+        padding: 4vh;
+    }
+
+    .card {
+        border: 1px solid white;
+        color: white;
+        margin-top: 10px;
+        width: 100%;
+        height: auto;
+        background: transparent;
+    }
+
+}
