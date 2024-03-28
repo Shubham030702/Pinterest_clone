@@ -33,18 +33,10 @@
   <div id="myModal" class="modal">
     <div class="modal-content">
       <img id="modalImage" src="" alt="">
-      <span id="nooflikes">0</span><h7 onclick="openlikes()">Likes </h7><br>
-      <div id="likedby" style="display: none;">
-        <h6>Liked By:-</h6>
-        <div id="users">
-
-        </div>
-      </div>  
       <div class="postname">
         <span id="modalName" onclick="openUser()"></span> : "<span id="modalDescription"></span>"
       </div>
-      <div class="likesection">
-        <i class="fa-regular fa-heart fa-2xl like-icon"  ></i>
+      <div class="likesection"> 
         <i class="fa-solid fa-expand fa-2xl" onclick="openfullimage()"></i>
         <i class="fa-solid fa-download fa-2xl" id="downloadButton"></i>
       </div>
@@ -72,14 +64,6 @@
           </div>
           <div class="userofpost" hidden>
               <%=post.user.id%>
-          </div>
-          <div class="likesnumber" id="lnumber" hidden >
-              <%=post.likes.length%>
-          </div>
-          <div class="usersliked" hidden>
-            <% post.likes.forEach(function(like){%>
-               <div class="inneruserliked"><div class="dpliked"><img class="dpliked" src="https://res.cloudinary.com/dwzejho0w/image/upload/v1708192875/<%=like.dp%>" alt=""></div><%=like.fullname%></div>
-              <%})%>
           </div>
         </div>
         <%})%>

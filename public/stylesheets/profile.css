@@ -435,6 +435,9 @@ button:hover {
         color: white;
         margin-bottom: 5vh;
         overflow: scroll;
+        scroll-behavior:smooth;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 
     .container {
@@ -446,6 +449,9 @@ button:hover {
         border: 1px solid white;
         overflow: scroll;
         padding: 4vh;
+        scroll-behavior:smooth;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 
     .card {

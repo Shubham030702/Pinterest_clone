@@ -380,7 +380,11 @@ body {
     .feed {
         font-size: 12px;
     }
-
+    .card-container{
+        scroll-behavior:smooth;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
     .modal-content {
         height: 60%;
         width: 80%;
