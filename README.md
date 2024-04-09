@@ -1,7 +1,8 @@
 #PixelVista
+
 PixelVista is a social media platform designed to showcase your talent and vision of photography. Users can create an account, upload their photos, and share them with the world. Whether you're a professional photographer or an amateur enthusiast, PixelVista provides a space to express your creativity and connect with like-minded individuals.
 
-#Features
+#Features <br>
 User Registration: Create an account with a unique user ID to access the platform's features.
 Photo Upload: Upload your photos directly to the platform and share them with the community.
 Profile Customization: Personalize your profile with a profile picture, bio, and other details.
