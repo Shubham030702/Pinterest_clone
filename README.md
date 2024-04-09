@@ -35,3 +35,6 @@ npm start
 
 ## Contributing
 Contributions are welcome! If you have any ideas for new features, bug fixes, or improvements, feel free to open an issue or submit a pull request. Please adhere to the code of conduct.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
