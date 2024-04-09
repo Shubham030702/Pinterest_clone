@@ -14,7 +14,7 @@ To get started with PixelVista, follow these steps: <br>
 
 <h4>Clone the Repository:</h4> Clone the PixelVista repository to your local machine using git clone.
 
-bash
+````bash
 Copy code
 git clone https://github.com/yourusername/pixelvista.git
 Install Dependencies: Navigate to the project directory and install the dependencies using npm install.
