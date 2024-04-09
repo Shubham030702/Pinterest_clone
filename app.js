@@ -10,10 +10,9 @@ var usersRouter = require('./routes/users');
 const passport = require('passport')
 const flash = require('connect-flash')
 const mongoose = require('mongoose')
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
 
-mongoose.connect('mongodb+srv://Shubham:Algorithm@cluster0.fw4vuhv.mongodb.net/?retryWrites=true&w=majority', {})
+mongoose.connect(process.env.MONGODB_URI, {})
   .then(() => {
     console.log('Connected to MongoDB Atlas');
   })

@@ -80,7 +80,7 @@ body {
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
-  animation: typing 3s  infinite,cursor .4s step-end infinite alternate;
+  animation: typing 3s steps(13) infinite,cursor .4s step-end infinite alternate;
 }
 
 @keyframes cursor{
@@ -88,7 +88,15 @@ body {
 }
 
 @keyframes typing{
-  from {width: 0;}
+  0%{
+    width: 0;
+  }
+  50%{
+    width: 100;
+  }
+  100%{
+    width: 0;
+  }
 }
 
 .subtitle {
