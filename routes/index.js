@@ -43,7 +43,6 @@ router.get('/feed', isLoggedIn, async function (req, res, next) {
   const postdata = await postModel.find({
     user: { $exists: true }
   }).populate("user").populate("likes")
-  // res.send(postdata)
   res.render("feed", { post: postdata});
 });
 
@@ -57,26 +56,6 @@ router.get('/delete/:id', isLoggedIn, async function (req, res, next) {
   user.save()
   res.redirect("/profile")
 })
-
-// route to like
-router.post('/like/:id', isLoggedIn, async function (req, res, next) {
-  const oid = new ObjectId(req.params.id);
-  const post = await postModel.findOne({ _id: oid }).populate('likes', 'fullname'); // Populate likes with user's fullname
-  const user = await userModel.findOne({ username: req.session.passport.user });
-  if (!post || !user) {
-    return res.status(404).json({ error: "Post or user not found" });
-  }
-  const likeIndex = post.likes.findIndex(element => element.equals(user._id));
-  if (likeIndex !== -1) {
-    post.likes.splice(likeIndex, 1);
-  } else {
-    post.likes.push(user._id);
-  }
-  await post.save();
-  res.json({ success: true, post: post });
-});
-
-
 
 // Route to upload
 router.post('/upload', isLoggedIn, upload.single("file"), async function (req, res, next) {
@@ -97,7 +76,6 @@ router.post('/upload', isLoggedIn, upload.single("file"), async function (req, r
     res.status(500).json({ success: false, message: "An error occurred while processing your request" });
   }
 });
-
 
 router.post('/editprofile', isLoggedIn, store.single("file"), async function (req, res) {
   try {

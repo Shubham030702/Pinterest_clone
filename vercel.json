@@ -2,9 +2,9 @@
     "version": 2,
     "builds": [{"src": "./app.js", "use": "@vercel/node"}],
     "routes": [
-        { "src": "/api/users/(.*)", "dest": "/routes/usersRouter.js" },
-        { "src": "/api/profile/(.*)", "dest": "/routes/indexRouter.js" },
-        { "src": "/api/(.*)", "dest": "/routes/indexRouter.js" },
+        { "src": "/api/users/(.*)", "dest": "/routes/usersRouter" },
+        { "src": "/api/profile/(.*)", "dest": "/routes/indexRouter" },
+        { "src": "/api/(.*)", "dest": "/routes/indexRouter" },
         { "src": "/(.*)", "dest": "/app.js" }
     ]
 }
