@@ -63,6 +63,7 @@ router.post('/upload', isLoggedIn, upload.single("file"), async function (req, r
     const imageUrl = req.file.secure_url;
     console.log('Image uploaded successfully!');
     const user = await userModel.findOne({ username: req.session.passport.user });
+    const imageText = req.body.filecaption || "";
     const postdata = await postModel.create({
       image: req.file.filename,
       imageText: req.body.filecaption,
