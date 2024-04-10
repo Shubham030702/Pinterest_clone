@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "build": "npm run build"
+    "build": "npm install"
   },
   "dependencies": {
     "cloudinary": "^1.41.3",
