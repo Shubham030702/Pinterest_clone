@@ -25,7 +25,7 @@ passport.use(new localStrategy(userModel.authenticate()))
 
 // Route to registration page
 router.get('/', function (req, res) {
-  if(isLoggedIn) res.redirect("/feed");
+  // if(isLoggedIn) res.redirect("/feed");
   res.render('index', { error: req.flash('error') });
 });
 
